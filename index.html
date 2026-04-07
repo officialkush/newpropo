@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Love ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{min-height:100vh;overflow-x:hidden;transition:1s;background:#ff99ac;position:relative;}
+body.giftPage{
+    background:url('indian-couple-celebrating-propose-day-by-being-romantic-with-each-other.jpg') center/cover no-repeat fixed;
+}
+body.giftPage::before{
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    pointer-events:none;
+    box-shadow: 0 0 2px white, 0 0 4px white, 0 0 6px white;
+    animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+    0%{box-shadow:0 0 2px white,0 0 4px white,0 0 6px white;}
+    100%{box-shadow:0 0 6px white,0 0 10px white,0 0 15px white;}
+}
+
+/* Hero Section */
+.hero{height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;color:white;text-align:center;position:relative;padding:20px;}
+.hero h1{font-family:Great Vibes;font-size:60px;margin-bottom:15px;}
+.hero h2{font-size:22px;margin-bottom:30px;}
+button{padding:12px 25px;border:none;border-radius:25px;margin:10px;cursor:pointer;font-size:16px;transition:0.3s;}
+.yes{background:white;color:#ff1493;} 
+.yes:hover{transform:scale(1.1);}
+.no{background:transparent;border:2px solid white;color:white;}
+
+/* Gift Page */
+.gift-screen{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    color:white;
+    z-index:10;
+    overflow-y:auto;
+    padding:50px 20px;
+    scroll-behavior:smooth;
+}
+
+/* Gift Box */
+.gift{position:relative;cursor:pointer;transition:1s;margin-bottom:30px;}
+.box{width:200px;height:200px;background:red;border-radius:10px;position:relative;box-shadow:0 0 30px white;}
+.lid{width:200px;height:40px;background:#ff3333;position:absolute;top:-40px;border-radius:10px;transition:1s;box-shadow:0 0 30px white;}
+.ribbon{position:absolute;width:40px;height:200px;background:white;left:80px;}
+.ribbon-h{position:absolute;width:200px;height:40px;background:white;top:80px;}
+.open .lid{transform:rotate(-120deg) translate(-80px,-80px);}
+
+/* Photos */
+.photos-container{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin:20px 0;}
+.photos-container img{width:200px;height:200px;object-fit:cover;border-radius:15px;display:none;box-shadow:0 0 20px white,0 0 40px gold,0 0 60px pink;}
+
+/* Bounce Animation for Photos */
+@keyframes bounceSmooth {
+  0% { transform: scale(0) rotate(-30deg); opacity:0; }
+  50% { transform: scale(1.3) rotate(10deg); opacity:1; }
+  70% { transform: scale(0.9) rotate(-5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.bounceIn{
+  animation: bounceSmooth 1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+
+/* Shayari */
+.shayari-container{margin-top:30px;max-width:800px;width:100%;text-align:center;display:none;position:relative;}
+.shayari-container p{font-size:18px;line-height:35px;margin:10px 0;color:white;}
+.shayari-container{animation:floatUpSmooth 40s linear infinite;}
+@keyframes floatUpSmooth{
+  0% { transform: translateY(100%); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+/* Restart */
+.restart{margin:20px 0;padding:12px 25px;border:none;border-radius:20px;background:white;color:#ff1493;display:none;cursor:pointer;font-size:16px;}
+
+/* Music Toggle */
+.music-toggle{margin:10px;padding:10px 20px;border:none;border-radius:20px;background:white;color:#ff1493;cursor:pointer;font-size:16px;display:none;}
+
+/* Floating hearts & sparkles */
+.floating{position:absolute;font-size:20px;pointer-events:none;}
+
+/* Responsive */
+@media (max-width:768px){
+.hero h1{font-size:45px;}
+.hero h2{font-size:18px;}
+.shayari-container p{font-size:16px;line-height:28px;}
+.photos-container img{width:150px;height:150px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero" id="hero">
+<h1>My Love ❤️</h1>
+<h2>Will you be my forever partner?</h2>
+<button class="yes" onclick="showGift()">YES 💖</button>
+<button class="no" onclick="moveNo(this)">Maybe Later 😅</button>
+</div>
+
+<!-- Gift Screen -->
+<div class="gift-screen" id="giftScreen">
+<div class="gift" onclick="openGift()" id="giftBox">
+<div class="lid"></div>
+<div class="box"><div class="ribbon"></div><div class="ribbon-h"></div></div>
+</div>
+
+<div class="photos-container" id="photosContainer">
+<img src="nidhi.jpeg" class="photo">
+<img src="WhatsApp Image 2026-04-01 at 10.52.05 PM.jpeg" class="photo">
+<img src="WhatsApp Image 2026-04-06 at 9.43.28 PM.jpeg" class="photo">
+<img src="image.png" class="photo">
+</div>
+
+<div class="shayari-container" id="shayariContainer"></div>
+
+<button class="restart" id="restart" onclick="location.reload()">Experience Again ✨</button>
+<button class="music-toggle" id="musicToggle" onclick="toggleMusic()">Pause Music ⏸️</button>
+
+<audio id="bgMusic" loop src="Dil_Ibaadat_KK_Latest_Bollywood_Songs_love_itsguriji_kk_bollywoodsongs_256KBPS.webm"></audio>
+</div>
+
+<script>
+// Move NO button
+function moveNo(btn){
+    btn.style.position="relative"; 
+    btn.style.left=Math.random()*200-100+"px"; 
+    btn.style.top=Math.random()*100-50+"px";
+}
+
+// Show Gift Page
+function showGift(){
+    document.getElementById("hero").style.display="none";
+    document.getElementById("giftScreen").style.display="flex";
+    document.body.classList.add("giftPage");
+    document.getElementById("musicToggle").style.display="inline-block";
+}
+
+// Floating hearts
+function floatingParticles(){
+    setInterval(()=>{
+        let el=document.createElement("div");
+        el.className="floating";
+        el.innerHTML=Math.random()>0.5?"💖":"✨";
+        el.style.left=Math.random()*window.innerWidth+"px";
+        el.style.top=Math.random()*window.innerHeight+"px";
+        el.style.fontSize=(10+Math.random()*15)+"px";
+        el.style.opacity=Math.random();
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(),4000);
+    },250);
+}
+
+// Open Gift
+function openGift(){
+    const giftBox = document.getElementById("giftBox");
+    giftBox.classList.add("open");
+    const bgMusic = document.getElementById("bgMusic");
+    if(bgMusic.paused) bgMusic.play();
+    floatingParticles();
+
+    setTimeout(()=>{
+        confettiExplosion();
+        showPhotos();
+        showShayari();
+        document.getElementById("restart").style.display="block";
+        document.getElementById("musicToggle").style.display="inline-block";
+    },1000);
+}
+
+// Photos bounce in
+function showPhotos(){
+    const photos = document.querySelectorAll(".photo");
+    photos.forEach((img,i)=>{
+        setTimeout(()=>{
+            img.style.display="block";
+            img.classList.add("bounceIn");
+        }, i*200);
+    });
+}
+
+// Shayari
+function showShayari(){
+    const shayariList = [
+        "❤️ तेरी मुस्कान मेरी पहचान है",
+        "💖 तेरी खुशी मेरी जान है",
+        "🌙 तू साथ है तो हर सपना आसान है",
+        "✨ तेरे बिना मेरी जिंदगी अधूरी है",
+        "🌹 हर जन्म में सिर्फ तू ही चाहिए",
+        "💞 हमेशा मेरे साथ रहना",
+        "💌 तू मेरी दुनिया है",
+        "🌟 मेरी हर दुआ तुझसे जुड़ी है",
+        "🌹 तेरी हर बात खास है",
+        "💖 तेरी यादें हमेशा साथ हैं",
+        "🌹 तू है तो जिंदगी हसीन है",
+        "💞 तेरे बिना सब सूना लगता है",
+        "✨ तू साथ है तो हर पल ख्वाब है",
+        "💌 तेरी हर मुस्कान मुझे जीने की वजह है",
+        "🌙 तेरी बातें हमेशा मेरे दिल को छू जाती हैं"
+    ];
+
+    const container = document.getElementById("shayariContainer");
+    container.innerHTML="";
+    container.style.display="block";
+    shayariList.forEach(line=>{
+        let p=document.createElement("p");
+        p.innerText=line;
+        container.appendChild(p);
+    });
+}
+
+// Confetti
+function confettiExplosion(){
+    const colors=["#ff1493","#ff69b4","#ffcc00","#00ffff","#ffffff"];
+    for(let i=0;i<150;i++){
+        let confetti=document.createElement("div");
+        confetti.style.position="absolute";
+        confetti.style.width="8px";
+        confetti.style.height="8px";
+        confetti.style.background=colors[Math.floor(Math.random()*colors.length)];
+        confetti.style.left=Math.random()*window.innerWidth+"px";
+        confetti.style.top=Math.random()*window.innerHeight+"px";
+        confetti.style.opacity=Math.random();
+        confetti.style.borderRadius="50%";
+        confetti.style.pointerEvents="none";
+        document.body.appendChild(confetti);
+        animateConfetti(confetti);
+    }
+}
+
+function animateConfetti(confetti){
+    let x=Math.random()*200-100;
+    let y=Math.random()*200+200;
+    let rotate=Math.random()*720-360;
+    confetti.animate([
+        {transform:"translate(0,0) rotate(0deg)", opacity:1},
+        {transform:`translate(${x}px,${y}px) rotate(${rotate}deg)`, opacity:0}
+    ], {duration:2500+Math.random()*1000, easing:"cubic-bezier(.36,.07,.19,.97)"});
+    setTimeout(()=>confetti.remove(),2500+Math.random()*1000);
+}
+
+// Cursor heart trail
+document.addEventListener("mousemove",function(e){
+    let heart=document.createElement("div");
+    heart.className="floating";
+    heart.innerHTML="💖";
+    heart.style.left=e.clientX+"px";
+    heart.style.top=e.clientY+"px";
+    heart.style.fontSize=(8+Math.random()*15)+"px";
+    heart.style.opacity=1;
+    heart.style.transition="transform 1s, opacity 1s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{
+        heart.style.transform=`translate(${Math.random()*50-25}px,${Math.random()*50-25}px)`;
+        heart.style.opacity=0;
+    },50);
+    setTimeout(()=>heart.remove(),1200);
+});
+
+// Music toggle function
+function toggleMusic(){
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicToggle");
+    if(music.paused){
+        music.play();
+        btn.innerText="Pause Music ⏸️";
+    }else{
+        music.pause();
+        btn.innerText="Play Music ▶️";
+    }
+}
+</script>
+
+</body>
+</html>
